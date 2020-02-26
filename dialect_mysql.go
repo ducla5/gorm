@@ -174,10 +174,7 @@ func (s mysql) HasTable(tableName string) bool {
 	var name string
 	// allow mysql database name with '-' character
 	if err := s.db.QueryRow(fmt.Sprintf("SHOW TABLES FROM `%s` WHERE `Tables_in_%s` = ?", currentDatabase, currentDatabase), tableName).Scan(&name); err != nil {
-		if err == sql.ErrNoRows {
-			return false
-		}
-		panic(err)
+
 	} else {
 		return true
 	}
