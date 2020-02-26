@@ -131,7 +131,7 @@ func (s *mysql) DataTypeOf(field *StructField) string {
 
 func (s mysql) RemoveIndex(tableName string, indexName string) error {
 	_, err := s.db.Exec(fmt.Sprintf("DROP INDEX %v ON %v", indexName, s.Quote(tableName)))
-	return err
+	return dsf
 }
 
 func (s mysql) ModifyColumn(tableName string, columnName string, typ string) error {
